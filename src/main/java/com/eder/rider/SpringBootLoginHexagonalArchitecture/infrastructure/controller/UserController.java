@@ -9,13 +9,11 @@ import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.dto.re
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.dto.request.TokenRequest;
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.mappers.CredentialsMapper;
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.mappers.TokenMapper;
-import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,9 +24,6 @@ public class UserController {
     private final AuthCheckerPort authCheckerPort;
     private final AuthServicePort authServicePort;
     private final JwtServicePort jwtServicePort;
-
-    private final PasswordEncoder encoder;
-    private final UserRepository userRepository;
 
     @Value("${access-token.duration_minutes}")
     private int accessTokenDuration;
