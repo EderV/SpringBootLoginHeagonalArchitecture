@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3312/login_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: user1
+    password: pass1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    generate-ddl: false
+
+logging:
+  level:
+    org:
+      hibernate.sql: DEBUG
+      springframework:
+        security: DEBUG
+
+access-refresh-token-path: "access-refresh-token-keys"
+
+access-token:
+  private: "access-refresh-token-keys/access-token-private.key"
+  public: "access-refresh-token-keys/access-token-public.key"
+  duration_minutes: 240
+
+private_endpoints: /api/event/admin/**, /api/logos/admin/**
