@@ -5,9 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Credentials {
+public class Registration {
 
-    String username;
-    String password;
+    private String email;
+    private String username;
+    private String password;
 
 }

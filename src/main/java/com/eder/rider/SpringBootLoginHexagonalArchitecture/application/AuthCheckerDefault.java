@@ -1,13 +1,14 @@
 package com.eder.rider.SpringBootLoginHexagonalArchitecture.application;
 
+import com.eder.rider.SpringBootLoginHexagonalArchitecture.application.base.BaseTextChecker;
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.Credentials;
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.in.AuthCheckerPort;
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Pattern;
+import java.util.Arrays;
 
 @Service
-public class AuthCheckerDefault implements AuthCheckerPort {
+public class AuthCheckerDefault extends BaseTextChecker implements AuthCheckerPort {
 
     // TODO Implement unit/functional tests
 
@@ -15,13 +16,7 @@ public class AuthCheckerDefault implements AuthCheckerPort {
     public void checkCredentials(Credentials credentials) throws IllegalArgumentException {
         nullCheck(credentials);
         checkMinimumDataRequired(credentials);
-        checkIllegalCharacters(credentials);
-    }
-
-    private void nullCheck(Object object) throws IllegalArgumentException {
-        if (object == null) {
-            throw new IllegalArgumentException("Input data is null");
-        }
+        checkIllegalCharactersInAllFields(credentials);
     }
 
     private void checkMinimumDataRequired(Credentials credentials) throws IllegalArgumentException {
@@ -33,20 +28,12 @@ public class AuthCheckerDefault implements AuthCheckerPort {
         }
     }
 
-    private void checkIllegalCharacters(Credentials credentials) throws IllegalArgumentException {
-        if (findIllegalCharacters(credentials.getUsername())) {
-            throw new IllegalArgumentException("Data provided contains illegal characters");
-        }
-    }
+    private void checkIllegalCharactersInAllFields(Credentials credentials) throws IllegalArgumentException {
+        var username = credentials.getUsername();
+        var password = credentials.getPassword();
 
-    private boolean findIllegalCharacters(String input) {
-        if (input != null) {
-            var pattern = "[<>\"';]";
-            var regex = Pattern.compile(pattern);
-            var matcher = regex.matcher(input);
-            return matcher.find();
-        }
-        return false;
+        var texts = Arrays.asList(username, password);
+        checkIllegalCharacters(texts);
     }
 
 }

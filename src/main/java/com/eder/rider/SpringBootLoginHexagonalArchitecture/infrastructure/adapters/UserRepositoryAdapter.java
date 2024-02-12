@@ -15,8 +15,19 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     private final UserRepository userRepository;
 
     @Override
+    public void saveUser(UserEntity userEntity) {
+        userRepository.save(userEntity);
+    }
+
+    @Override
     public User getUserFromUsername(String username) {
         var userEntity = userRepository.getUserByUsername(username);
+        return userEntity.map(this::toUser).orElse(null);
+    }
+
+    @Override
+    public User getUserFromEmail(String email) {
+        var userEntity = userRepository.getUserByEmail(email);
         return userEntity.map(this::toUser).orElse(null);
     }
 
