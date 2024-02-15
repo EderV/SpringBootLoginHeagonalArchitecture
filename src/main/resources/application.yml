@@ -1,3 +1,5 @@
 spring:
   profiles:
     active: @active.profile@
+
+private_endpoints: /api/user/**, /api/admin/**
