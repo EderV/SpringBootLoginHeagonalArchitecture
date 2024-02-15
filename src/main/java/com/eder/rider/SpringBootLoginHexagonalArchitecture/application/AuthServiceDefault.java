@@ -2,12 +2,12 @@ package com.eder.rider.SpringBootLoginHexagonalArchitecture.application;
 
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.Credentials;
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.in.AuthServicePort;
+import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -30,11 +30,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/api/event/admin/**").hasRole("ADMIN")
-                .requestMatchers("/api/logos/admin/**").hasRole("ADMIN")
-//                .requestMatchers("/api/event/**").permitAll()
-//                .requestMatchers("/api/auth/**").permitAll()
-//                .anyRequest().authenticated())
+                .requestMatchers("/api/user/**").hasRole("USER")
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll())
 
                 .cors(Customizer.withDefaults())

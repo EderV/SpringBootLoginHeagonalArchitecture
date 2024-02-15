@@ -18,13 +18,16 @@ public interface UserMapper {
 
     @Mapping(target = "roles", expression = "java(mapRoles(userEntity))")
     User toUser(UserEntity userEntity);
-    @Mapping(target = "roles", expression = "java(mapRoleEntities(user))")
-    UserEntity toUserEntity(User user);
+
+//    @Mapping(target = "roles", expression = "java(mapRoleEntities(user))")
+//    UserEntity toUserEntity(User user);
 
     default List<Role> mapRoles(UserEntity userEntity) {
+        var userWithId = User.builder().id(userEntity.getId()).build();
         var roles = new ArrayList<Role>();
         for (var roleEntity : userEntity.getRoles()) {
             var role = new Role();
+            role.setUser(userWithId);
             role.setRole(roleEntity.getRole());
             role.setEnabled(roleEntity.getEnabled());
             roles.add(role);
@@ -32,50 +35,29 @@ public interface UserMapper {
         return roles;
     }
 
-    default List<RoleEntity> mapRoleEntities(User user) {
+    default UserEntity toUserEntity(User user) {
+        var userEntity = UserEntity.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .accountEnabled(user.getAccountEnabled())
+                .accountExpired(user.getAccountExpired())
+                .accountLocked(user.getAccountLocked())
+                .credentialsExpired(user.getCredentialsExpired())
+                .build();
+
         var roleEntities = new ArrayList<RoleEntity>();
         for (var role : user.getRoles()) {
             var roleEntity = new RoleEntity();
+            roleEntity.setUser(userEntity);
             roleEntity.setRole(role.getRole());
             roleEntity.setEnabled(role.getEnabled());
             roleEntities.add(roleEntity);
         }
-        return roleEntities;
+
+        userEntity.setRoles(roleEntities);
+        return userEntity;
     }
-
-//    @Mapping(target = "roles", ignore = true)
-//    User toUserIgnoreRoles(UserEntity userEntity);
-//    @Mapping(target = "roles", ignore = true)
-//    UserEntity toUserEntityIgnoreRoles(User user);
-
-//    default User toUser(UserEntity userEntity) {
-//        var user = toUserIgnoreRoles(userEntity);
-//
-//        var roles = new ArrayList<Role>();
-//        for (var roleEntity : userEntity.getRoles()) {
-//            var role = new Role();
-//            role.setRole(roleEntity.getRole());
-//            role.setEnabled(roleEntity.getEnabled());
-//            roles.add(role);
-//        }
-//        user.setRoles(roles);
-//
-//        return user;
-//    }
-
-//    default UserEntity toUserEntity(User user) {
-//        var userEntity = toUserEntityIgnoreRoles(user);
-//
-//        var roleEntities = new ArrayList<RoleEntity>();
-//        for (var role : user.getRoles()) {
-//            var roleEntity = new RoleEntity();
-//            roleEntity.setRole(role.getRole());
-//            roleEntity.setEnabled(role.getEnabled());
-//            roleEntities.add(roleEntity);
-//        }
-//        userEntity.setRoles(roleEntities);
-//
-//        return userEntity;
-//    }
 
 }

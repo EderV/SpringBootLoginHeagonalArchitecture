@@ -15,7 +15,8 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     private final UserRepository userRepository;
 
     @Override
-    public void saveUser(UserEntity userEntity) {
+    public void saveUser(User user) {
+        var userEntity = toUserEntity(user);
         userRepository.save(userEntity);
     }
 
@@ -33,6 +34,10 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
 
     private User toUser(UserEntity userEntity) {
         return UserMapper.MAPPER.toUser(userEntity);
+    }
+
+    private UserEntity toUserEntity(User user) {
+        return UserMapper.MAPPER.toUserEntity(user);
     }
 
 }

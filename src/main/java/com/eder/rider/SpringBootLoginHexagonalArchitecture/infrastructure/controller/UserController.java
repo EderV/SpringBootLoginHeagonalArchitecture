@@ -59,10 +59,9 @@ public class UserController {
 
         registrationCheckerPort.checkRegistration(registration);
 
-        var authentication = registrationServicePort.registerUser(registration);
-        var tokenRequest = generateTokenRequest(authentication);
+        registrationServicePort.registerUser(registration);
 
-        return new ResponseEntity<>(tokenRequest, HttpStatus.OK);
+        return new ResponseEntity<>("User registered in DB", HttpStatus.CREATED);
     }
 
     private TokenRequest generateTokenRequest(Authentication authentication) {

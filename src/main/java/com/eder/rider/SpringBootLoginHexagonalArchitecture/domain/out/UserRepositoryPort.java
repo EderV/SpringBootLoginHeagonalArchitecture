@@ -1,11 +1,10 @@
 package com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.out;
 
 import com.eder.rider.SpringBootLoginHexagonalArchitecture.domain.User;
-import com.eder.rider.SpringBootLoginHexagonalArchitecture.infrastructure.dto.entity.UserEntity;
 
 public interface UserRepositoryPort {
 
-    void saveUser(UserEntity userEntity);
+    void saveUser(User user);
 
     User getUserFromUsername(String username);
 
