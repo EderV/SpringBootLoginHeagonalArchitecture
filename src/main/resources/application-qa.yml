@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3312/qa_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: user1
+    password: pass1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:/qa/schema.sql
+      data-locations: classpath:/qa/data.sql
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    org:
+      hibernate.sql: DEBUG
+      springframework:
+        security: DEBUG
+
+access-token:
+  duration_minutes: 240

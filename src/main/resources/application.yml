@@ -2,4 +2,10 @@ spring:
   profiles:
     active: @active.profile@
 
+access-refresh-token-path: "access-refresh-token-keys"
+
+access-token:
+  private: "access-refresh-token-keys/access-token-private.key"
+  public: "access-refresh-token-keys/access-token-public.key"
+
 private_endpoints: /api/user/**, /api/admin/**

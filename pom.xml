@@ -28,6 +28,7 @@
 		<version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
 		<version.spring-boot-maven-plugin>3.1.3</version.spring-boot-maven-plugin>
 		<version.maven-compiler-plugin>3.11.0</version.maven-compiler-plugin>
+		<version.io-jsonwebtoken>0.11.5</version.io-jsonwebtoken>
 	</properties>
 
 	<profiles>
@@ -48,6 +49,14 @@
 			<properties>
 				<packaging.type>jar</packaging.type>
 				<active.profile>prod</active.profile>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>qa</id>
+			<properties>
+				<packaging.type>jar</packaging.type>
+				<active.profile>qa</active.profile>
 			</properties>
 		</profile>
 
@@ -76,19 +85,19 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
-			<version>0.11.5</version>
+			<version>${version.io-jsonwebtoken}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
-			<version>0.11.5</version>
+			<version>${version.io-jsonwebtoken}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
-			<version>0.11.5</version>
+			<version>${version.io-jsonwebtoken}</version>
 		</dependency>
 
 		<dependency>

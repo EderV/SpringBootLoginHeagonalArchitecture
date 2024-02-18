@@ -8,7 +8,8 @@ CREATE TABLE user (
     account_expired BOOLEAN NOT NULL,
     account_locked BOOLEAN NOT NULL,
     credentials_expired BOOLEAN NOT NULL,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP
+);
 ------------------------------------------------
 
 ------------------ Table Role ------------------
