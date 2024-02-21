@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS user;
 
 CREATE TABLE user
 (
-    id                  BINARY(16)      PRIMARY KEY,
+    id                  VARCHAR(36)     PRIMARY KEY,
     email               VARCHAR(255)    NOT NULL,
     username            VARCHAR(255)    NOT NULL,
     password            VARCHAR(255)    NOT NULL,
@@ -16,8 +16,8 @@ CREATE TABLE user
 
 CREATE TABLE role
 (
-    id              BINARY(16)       PRIMARY KEY,
-    user_id         BINARY(16)       NOT NULL,
+    id              VARCHAR(36)       PRIMARY KEY,
+    user_id         VARCHAR(36)       NOT NULL,
     role            VARCHAR(255)     NOT NULL,
     enabled         BOOLEAN          NOT NULL,
     created_at      TIMESTAMP,
