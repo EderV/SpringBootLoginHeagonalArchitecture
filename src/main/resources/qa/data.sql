@@ -1,6 +1,7 @@
 INSERT INTO user (id, email, username, password, account_enabled, account_expired, account_locked, credentials_expired, created_at)
 VALUES
     ('458ff945-1368-41d7-a9a6-3ca9bde9d73f', 'user1@example.com', 'user1', '$2a$10$qD046qHeed2WxRL20VTFDeWqRxvsZgPum/Euu/Tv7wETJE2M44pqC', TRUE, FALSE, FALSE, FALSE, CURRENT_TIMESTAMP),
+    ('60925486-08c5-4383-a0b0-74e069a33fb3', 'user_no_roles@example.com', 'UserNoRoles', '$2a$10$qD046qHeed2WxRL20VTFDeWqRxvsZgPum/Euu/Tv7wETJE2M44pqC', TRUE, FALSE, FALSE, FALSE, CURRENT_TIMESTAMP),
     ('ab5facfe-aec1-4d64-8d88-e581f1369f8a', 'user_admin@mail.com', 'AdminUser', '$2a$10$qD046qHeed2WxRL20VTFDeWqRxvsZgPum/Euu/Tv7wETJE2M44pqC', TRUE, FALSE, FALSE, FALSE, CURRENT_TIMESTAMP);
 
 

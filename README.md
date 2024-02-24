@@ -15,6 +15,7 @@ dependency injection and Mapstruct to map objects between infrastructure layer a
 * Hexagonal Architecture
 * Different entities in infrastructure layer and application layer
 * Lombok for dependency injection
+* All endpoints covered with integration tests
 * Spring Security 6
 * Exception handling with `@ControllerAdvice`
 * Docker compose file for the database
