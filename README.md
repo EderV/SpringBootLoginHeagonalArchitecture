@@ -14,7 +14,7 @@ dependency injection and Mapstruct to map objects between infrastructure layer a
 * Run `docker-compose up -d` on root project
 * Create a database named `login_db`
 * If you want to use `qa` profile, create a database named `qa_db`. The tables of this database are defined in `src/main/resources/qa/schema.sql`
-* Create all the tables inside the database using the querys in `<project_root>/SQL_tables_querys.txt` file
+* Create all the tables inside `login_db` database using the querys in `<project_root>/SQL_tables_querys.txt` file
 * Run `./mvnw spring-boot:run` on root project
 
 ## Features 🔬
