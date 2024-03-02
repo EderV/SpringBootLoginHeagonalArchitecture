@@ -2,6 +2,16 @@ spring:
   profiles:
     active: @active.profile@
 
+server:
+  ssl:
+    key-store: keystore/springboot.p12
+    key-store-password: P4sSW0rD.34!
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: P4sSW0rD.34!
+    enabled: true
+  port: 8443
+
 access-refresh-token-path: "access-refresh-token-keys"
 
 access-token:

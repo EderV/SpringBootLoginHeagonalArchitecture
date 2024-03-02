@@ -5,6 +5,12 @@ Spring Security 6 using Hexagonal Architecture to make this project easy to grow
 dependency injection and Mapstruct to map objects between infrastructure layer and application layer.
 
 ## How to run ▶️
+* Generate self-signed certificate for HTTPS
+  * open terminal and run: `keytool -genkeypair -alias springboot -keyalg RSA -keysize 4096 -storetype PKCS12 -keystore springboot.p12 -validity 3650 -storepass <your_password>`
+  * take the `springboot.p12` generated file and move it to `<project_root>/keystore` folder
+  * set your keystore password in `application.yml`
+    * `server.ssl.key-store-password: <your_password>`
+    * `server.ssl.key-password: <your_password>`
 * Run `docker-compose up -d` on root project
 * Create a database named `login_db`
 * If you want to use `qa` profile, create a database named `qa_db`. The tables of this database are defined in `src/main/resources/qa/schema.sql`
@@ -16,6 +22,7 @@ dependency injection and Mapstruct to map objects between infrastructure layer a
 * Hexagonal Architecture
 * Different entities in infrastructure layer and application layer
 * Lombok for dependency injection
+* HTTPS with self-signed certificate
 * All endpoints covered with integration tests
 * Spring Security 6
 * Exception handling with `@ControllerAdvice`

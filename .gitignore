@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 access-refresh-token-keys
+keystore
 
 ### STS ###
 .apt_generated
